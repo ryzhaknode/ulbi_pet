@@ -13,7 +13,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     // Для абсолютного импорта
-    "baseUrl": ".",
+    "baseUrl": "../../Desktop/ulbi-reactfrontend/code/25 Настраиваем Storybook. Декораторы. Стори кейсы на компоненты/25-26/production-project-0775f45c40730efc23a058caa087214d3f08e963",
     "paths": {
       "*": ["./src/*"]
     },
@@ -37,5 +37,10 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": [
+    "./config/jest/setupTests.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+  ]
 }
