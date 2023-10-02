@@ -13,7 +13,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     // Для абсолютного импорта
-    "baseUrl": "../../Desktop/ulbi-reactfrontend/code/27 CI pipeline. Автоматизация прогона тестов метка/27/production-project-4215aad27241c7a73faa058a6f2fc99f656013f5",
+    "baseUrl": "../../Desktop/ulbi-reactfrontend/code/28 Сайдбар. Состояния кнопки. UI Screenshot test report/28/production-project-e40ab65ce4a5eefee043ef76889ee69f1f152752",
     "paths": {
       "*": ["./src/*"]
     },
