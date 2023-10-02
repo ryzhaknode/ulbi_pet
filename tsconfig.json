@@ -13,7 +13,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     // Для абсолютного импорта
-    "baseUrl": "../../Desktop/ulbi-reactfrontend/code/26 Скриншотные тесты. Loki. Регрессионное UI тестирование/25-26_2/production-project-0775f45c40730efc23a058caa087214d3f08e963",
+    "baseUrl": "../../Desktop/ulbi-reactfrontend/code/27 CI pipeline. Автоматизация прогона тестов метка/27/production-project-4215aad27241c7a73faa058a6f2fc99f656013f5",
     "paths": {
       "*": ["./src/*"]
     },
