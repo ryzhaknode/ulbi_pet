@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
-import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-import { BuildEnv, BuildPaths } from './config/build/types/config';
+import { buildWebpackConfig } from '../../Desktop/ulbi-reactfrontend/code/29 Модальное окно. Portal/29/production-project-275ffcccdf0d6e889dc640425bb37336eb8dca5f/config/build/buildWebpackConfig';
+import { BuildEnv, BuildPaths } from '../../Desktop/ulbi-reactfrontend/code/29 Модальное окно. Portal/29/production-project-275ffcccdf0d6e889dc640425bb37336eb8dca5f/config/build/types/config';
 
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
