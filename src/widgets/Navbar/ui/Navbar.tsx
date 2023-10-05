@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '../../../shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal/Modal';
+import { Modal } from '../../../shared/ui/Modal/Modal';
 import React, { useCallback, useState } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from '../../../shared/ui/Button/Button';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
