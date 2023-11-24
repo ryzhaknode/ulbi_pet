@@ -1,29 +1,75 @@
-import React, {Suspense} from 'react';
-import {Link, Route, Routes} from 'react-router-dom';
-import './styles/index.scss';
-import {classNames} from "shared/lib/classNames/classNames";
-import {useTheme} from "app/providers/ThemeProvider";
-import {AboutPage} from "pages/AboutPage";
-import {MainPage} from "pages//MainPage";
+import React, { Suspense, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { classNames } from '../shared/lib/classNames/classNames';
+import { getUserInited, initAuthData } from '../entities/User';
+import { AppRouter } from './providers/router';
+import { Navbar } from '../widgets/Navbar';
+import { Sidebar } from '../widgets/Sidebar';
+import { useTheme } from '../shared/lib/hooks/useTheme/useTheme';
+import { useAppDispatch } from '../shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ToggleFeatures } from '../shared/lib/features';
+import { MainLayout } from '../shared/layouts/MainLayout';
+import { AppLoaderLayout } from '../shared/layouts/AppLoaderLayout';
+import { PageLoader } from '../widgets/PageLoader';
 
+function App() {
+    const { theme } = useTheme();
+    const dispatch = useAppDispatch();
+    const inited = useSelector(getUserInited);
 
-const App = () => {
+    useEffect(() => {
+        if (!inited) {
+            dispatch(initAuthData());
+        }
+    }, [dispatch, inited]);
 
-    const {theme, toggleTheme} = useTheme();
+    if (!inited) {
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <div
+                        id="app"
+                        className={classNames('app_redesigned', {}, [theme])}
+                    >
+                        <AppLoaderLayout />{' '}
+                    </div>
+                }
+                off={<PageLoader />}
+            />
+        );
+    }
 
     return (
-        <div className={classNames('app', {hovered: true}, [theme])}>
-            <button onClick={toggleTheme}>Toggle</button>
-            <Link to={'/'}>Главная</Link>
-            <Link to={'/about'}>О сайте</Link>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={'/about'} element={<AboutPage/>}/>
-                    <Route path={'/'} element={<MainPage/>}/>
-                </Routes>
-            </Suspense>
-        </div>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <div id="app" className={classNames('app', {}, [theme])}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
+                </div>
+            }
+            on={
+                <div
+                    id="app"
+                    className={classNames('app_redesigned', {}, [theme])}
+                >
+                    <Suspense fallback="">
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
+                    </Suspense>
+                </div>
+            }
+        />
     );
-};
+}
 
 export default App;
